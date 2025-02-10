@@ -41,18 +41,67 @@
 
     <!-- Example sections for different lectures -->
     <div class="lecture-section">
-        <h2>Lecture 1: Introduction to Programming</h2>
-        <p>This lecture covers the basics of programming, including variables, data types, and control structures.</p>
+        <h2>January 27th</h2>
+        <p> #include &lh;stdio.h&gh;
+
+int a = 100, b = 2, c = 25, d = 3, e = 1;
+int result;
+
+
+int main() {
+	result = e + c / d;
+	printf("%d",result);
+	return 0;
+}</p>
     </div>
 
     <div class="lecture-section">
-        <h2>Lecture 2: Functions and Loops</h2>
-        <p>In this lecture, we dive deeper into functions, loops, and more complex control structures.</p>
+        <h2>January 31st</h2>
+        <p> #include &lh;stdio.h&gh;
+
+int main() {
+	int pulse, restHeartrate;
+	int run;
+	run = 1;
+	//loop starts here
+	while (run == 1) {
+		printf("\n\nTake your resting pule for 10 seconds. \n");
+		printf("Enter your pulse rate: ");
+		scanf("%i", &pulse);
+
+		restHeartrate = pulse * 6;
+
+		printf("\n\n Your resting heart rate is %d.\n", restHeartrate);
+
+		printf("\nTry again? \n1 for yes, 0 for no: ");
+		scanf("%i", &run);
+	}
+	return 0;
+
+}</p>
     </div>
 
     <div class="lecture-section">
-        <h2>Lecture 3: Arrays and Data Structures</h2>
-        <p>This lecture introduces arrays, lists, and other data structures used in programming.</p>
+        <h2>Febuary 3rd</h2>
+        <p>#include &lh;stdio.h&gh;
+
+int main() {
+    int speed;
+    printf("Enter a speed:\n");
+    scanf("%d", &speed);
+
+    if (speed >= 25) {
+        printf("You're going too fast\n");
+    }
+    else if (speed > 15) {
+        printf("You're going a little too fast\n");
+    }
+    else {
+        printf("You're ok\n");
+    }
+    
+    return 0;
+}</p>
     </div>
 
     <!-- Link to return to the home page -->
