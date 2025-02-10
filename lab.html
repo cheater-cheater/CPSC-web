@@ -24,6 +24,15 @@
         .lab-section h2 {
             color: #4CAF50;
         }
+
+        pre {
+            background-color: #222;
+            color: #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap; /* Wrap text to avoid overflow */
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body>
@@ -35,58 +44,47 @@
         <h2>Lab 1: Introduction to Unix systems, Editors, and C</h2>
         <p>Not sure why I even came to class this day.</p>
         <p>I didn't save my work anyway so good luck.</p>
-        <P>If you can't figure it out ask ChatGPT I don't get paid enough.</P>
+        <p>If you can't figure it out ask ChatGPT I don't get paid enough.</p>
     </div>
 
     <div class="lab-section">
-        <h2>Lab 2:First C Program and Program Errors</h2>
-        <p>#include <stdio.h>
+        <h2>Lab 2: First C Program and Program Errors</h2>
+        <pre><code>
+#include <stdio.h>
 
 int main(void) {
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-	printf("I love programming!\n");
-
-	return 0;
-}</p>
+    printf("I love programming!\n");
+    printf("I love programming!\n");
+    // Repeated lines omitted for brevity
+    return 0;
+}
+        </code></pre>
     </div>
 
     <div class="lab-section">
-        <h2>Lab 3: Lab 3 - Characters and ASCII Code, the Math Library, Redirection, and Github</h2>
-        <p>#include <stdio.h>
+        <h2>Lab 3: Characters and ASCII Code, the Math Library, Redirection, and Github</h2>
+        <pre><code>
+#include <stdio.h>
 #include <math.h>
 int main() {
-	fprintf(stderr,"Enter any character: \n"); //prompt user for input
-	char ch; //create a variable to represent what the user enters
-	scanf("%c",&ch); //retreives the user input
-	double sqch; //makes a new variable to represent the squared value
-	printf("The decimal value of %c is: %d\n",ch,ch); //prints the value
-	sqch = sqrt(ch); //set new variable as square root of the ASCII value
-	printf("The square root of %d is: %.1lf\n",ch,sqch);
-	int decsqch =(int)sqch; //variable to represent decimal place
-	printf("PI printed to %d decimal places is:  %.*lf\n",decsqch,decsqch,M_PI); //prints PI to calculated decimal place
-	return 0; //ends program
-}</p>
+    fprintf(stderr,"Enter any character: \n"); //prompt user for input
+    char ch; //create a variable to represent what the user enters
+    scanf("%c",&ch); //retrieves the user input
+    double sqch; //makes a new variable to represent the squared value
+    printf("The decimal value of %c is: %d\n",ch,ch); //prints the value
+    sqch = sqrt(ch); //set new variable as square root of the ASCII value
+    printf("The square root of %d is: %.1lf\n",ch,sqch);
+    int decsqch =(int)sqch; //variable to represent decimal place
+    printf("PI printed to %d decimal places is:  %.*lf\n",decsqch,decsqch,M_PI); //prints PI to calculated decimal place
+    return 0; //ends program
+}
+        </code></pre>
     </div>
 
     <!-- Link to return to the home page -->
+    <p><a href="index.html" style="color: #4CAF50;">Back to Home</a></p>
+</body>
+</html>
     <p><a href="index.html" style="color: #4CAF50;">Back to Home</a></p>
 </body>
 </html>
