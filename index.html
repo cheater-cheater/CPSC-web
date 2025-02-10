@@ -7,12 +7,34 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body { 
+            background-color: black; 
+            color: white; 
             font-family: Arial, sans-serif; 
             text-align: center; 
-            background-color: black; /* Black background */
-            color: white; /* White text */
         }
-        h1 { color: white; } /* Ensures header is white */
+        h1 { color: white; }
+
+        /* Styles for the buttons container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            margin-top: 20px; /* Space from the image */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
     </style>
 </head>
 <body>
@@ -22,8 +44,14 @@
     <button onclick="changeText()">Click Me!</button>
     <p id="text">Hello, world!</p>
 
-    <!-- Image placed correctly -->
+    <!-- Image displayed -->
     <img src="images/genericcoding_1.jpg" alt="A coding-related image" width="400">
+
+    <!-- Two buttons beneath the image -->
+    <div class="button-container">
+        <button onclick="alert('Lab button clicked!')">Lab</button>
+        <button onclick="alert('Lecture button clicked!')">Lecture</button>
+    </div>
 
     <script>
         function changeText() {
