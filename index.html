@@ -6,8 +6,13 @@
     <title>My First Website</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        h1 { color: blue; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: black; /* Black background */
+            color: white; /* White text */
+        }
+        h1 { color: white; } /* Ensures header is white */
     </style>
 </head>
 <body>
@@ -17,7 +22,8 @@
     <button onclick="changeText()">Click Me!</button>
     <p id="text">Hello, world!</p>
 
-    <img src="images/genericcoding_1.jpg" alt="A coding-related image">
+    <!-- Image placed correctly -->
+    <img src="images/genericcoding_1.jpg" alt="A coding-related image" width="400">
 
     <script>
         function changeText() {
