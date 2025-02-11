@@ -120,6 +120,60 @@ int main() {
 }
         </code></pre>
     </div>
+    <div class="lab-section">
+        <h2>Lab 5: Loops and Conditionals</h2>
+        <p>Nearly identical to the preceeding lab</p>
+        <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int weight;
+    int height;
+    int bmi;
+    int repeat = 1;
+
+    printf("\n\n               bmi Calculator \n\n");   // 15 spaces
+    printf("Body Mass Index (bmi) is a ratio of weight to height.\n\n");
+    printf("Keep in mind that muscle weighs more than fat, so bmi is \n"
+           "not always the best metric of a healthy weight.\n\n\n");
+
+    while (repeat != 0) {
+
+        printf("Enter your weight in pounds (as an integer): ");
+        scanf("%d", &weight);
+
+        printf("Enter your height in inches (as an integer): \n");
+        scanf("%d", &height);
+
+        bmi = (weight * 703) / (height * height);
+        printf("Your bmi is %d.\n", bmi);
+            
+             if (bmi < 19) {
+    printf("According to your bmi, your weight of %d lbs is an unhealthy weight\n", weight);
+} 
+else if (bmi >= 19 && bmi < 24) {  // Healthy weight range
+    printf("According to your bmi, your weight of %d lbs is a healthy weight\n", weight);
+} 
+else if (bmi >= 24 && bmi < 30) {  // Overweight range
+    printf("According to your bmi, your weight of %d lbs is considered overweight\n", weight);
+} 
+else {  // BMI 30 or above is considered obese
+    printf("According to your bmi, your weight of %d lbs is considered obese\n", weight);
+}
+
+        printf("- - - - - - - - - - - - - - - - - - - - - "
+           "- - - - - - - - - - - -\n\n");
+       	 do {
+            printf("Enter 1 to go again or 0 to quit: ");
+            scanf("%d", &repeat);
+        } while (repeat != 0 && repeat != 1);  // Only allow 0 or 1
+        printf("\n");
+    }
+
+    return 0;
+}
+        </code></pre>
+    </div>
     <!-- Link to return to the home page -->
     <p><a href="index.html" style="color: #4CAF50;">Back to Home</a></p>
 </body>
