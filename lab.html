@@ -13,16 +13,39 @@
         }
         h1 { color: white; }
 
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
         /* Lab sections styling */
         .lab-section {
-            margin: 20px 0;
+            margin: 20px auto;
             padding: 15px;
             background-color: #333;
             border-radius: 5px;
+            max-width: 800px;
+            text-align: left;
         }
 
         .lab-section h2 {
             color: #4CAF50;
+            text-align: center;
         }
 
         pre {
@@ -33,30 +56,54 @@
             white-space: pre-wrap; /* Wrap text to avoid overflow */
             word-wrap: break-word;
         }
-</nav>
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #back-to-top:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
+
     <h1>Welcome to the Lab Page</h1>
     <p>Select a lab section to view more details:</p>
 
-<nav>
-    <a href="#lab1">Lab 1</a> | 
-    <a href="#lab2">Lab 2</a> | 
-    <a href="#lab3">Lab 3</a> | 
-    <a href="#lab4">Lab 4</a> | 
-    <a href="#lab5">Lab 5</a>
-</nav>
-    
-    <!-- Example sections for different labs -->
-    <div class="lab-section">
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#lab1">Lab 1</a> | 
+        <a href="#lab2">Lab 2</a> | 
+        <a href="#lab3">Lab 3</a> | 
+        <a href="#lab4">Lab 4</a> | 
+        <a href="#lab5">Lab 5</a>
+    </nav>
+
+    <!-- Lab Sections -->
+    <div class="lab-section" id="lab1">
         <h2>Lab 1: Introduction to Unix systems, Editors, and C</h2>
         <p>Not sure why I even came to class this day.</p>
         <p>I didn't save my work anyway so good luck.</p>
-        <p>If you can't figure it out ask ChatGPT I don't get paid enough.</p>
+        <p>If you can't figure it out, ask ChatGPT. I don't get paid enough.</p>
     </div>
 
-    <div class="lab-section">
+    <div class="lab-section" id="lab2">
         <h2>Lab 2: First C Program and Program Errors</h2>
         <pre><code>
 #include &lt;stdio.h&gt;
@@ -64,126 +111,130 @@
 int main(void) {
     printf("I love programming!\n");
     printf("I love programming!\n");
-    // Repeated lines omitted for brevity
     return 0;
 }
         </code></pre>
     </div>
 
-    <div class="lab-section">
-        <h2>Lab 3: Characters and ASCII Code, the Math Library, Redirection, and Github</h2>
+    <div class="lab-section" id="lab3">
+        <h2>Lab 3: Characters and ASCII Code, the Math Library, Redirection, and GitHub</h2>
         <pre><code>
 #include &lt;stdio.h&gt;
 #include &lt;math.h&gt;
+
 int main() {
-    fprintf(stderr,"Enter any character: \n"); //prompt user for input
-    char ch; //create a variable to represent what the user enters
-    scanf("%c",&ch); //retrieves the user input
-    double sqch; //makes a new variable to represent the squared value
-    printf("The decimal value of %c is: %d\n",ch,ch); //prints the value
-    sqch = sqrt(ch); //set new variable as square root of the ASCII value
-    printf("The square root of %d is: %.1lf\n",ch,sqch);
-    int decsqch =(int)sqch; //variable to represent decimal place
-    printf("PI printed to %d decimal places is:  %.*lf\n",decsqch,decsqch,M_PI); //prints PI to calculated decimal place
-    return 0; //ends program
+    fprintf(stderr,"Enter any character: \n"); // prompt user for input
+    char ch; 
+    scanf("%c", &ch); // retrieve user input
+    double sqch = sqrt(ch);
+    
+    printf("The decimal value of %c is: %d\n", ch, ch);
+    printf("The square root of %d is: %.1lf\n", ch, sqch);
+    
+    int decsqch = (int)sqch; 
+    printf("PI printed to %d decimal places is: %.*lf\n", decsqch, decsqch, M_PI);
+
+    return 0;
 }
         </code></pre>
     </div>
-<div class="lab-section">
+
+    <div class="lab-section" id="lab4">
         <h2>Lab 4: Loops</h2>
         <pre><code>
 #include &lt;stdio.h&gt;
 
 int main() {
-    int weight;
-    int height;
-    int bmi;
-    int repeat = 1;
+    int weight, height, bmi, repeat = 1;
 
-    printf("\n\n               bmi Calculator \n\n");   // 15 spaces
-    printf("Body Mass Index (bmi) is a ratio of weight to height.\n\n");
-    printf("Keep in mind that muscle weighs more than fat, so bmi is \n"
-           "not always the best metric of a healthy weight.\n\n\n");
+    printf("\n\nBMI Calculator\n\n");
+    printf("Body Mass Index (BMI) is a ratio of weight to height.\n\n");
 
     while (repeat != 0) {
-
-        printf("Enter your weight in pounds (as an integer): ");
+        printf("Enter your weight in pounds: ");
         scanf("%d", &weight);
 
-        printf("Enter your height in inches (as an integer): \n");
+        printf("Enter your height in inches: ");
         scanf("%d", &height);
 
         bmi = (weight * 703) / (height * height);
-        printf("Your bmi is %d.\n", bmi);
+        printf("Your BMI is %d.\n", bmi);
 
-        printf("- - - - - - - - - - - - - - - - - - - - - "
-           "- - - - - - - - - - - -\n\n");
-       	 do {
+        do {
             printf("Enter 1 to go again or 0 to quit: ");
             scanf("%d", &repeat);
-        } while (repeat != 0 && repeat != 1);  // Only allow 0 or 1
-        printf("\n");
+        } while (repeat != 0 && repeat != 1);
     }
 
     return 0;
 }
         </code></pre>
     </div>
-    <div class="lab-section">
+
+    <div class="lab-section" id="lab5">
         <h2>Lab 5: Loops and Conditionals</h2>
-        <p>Nearly identical to the preceeding lab</p>
+        <p>Nearly identical to the preceding lab.</p>
         <pre><code>
 #include &lt;stdio.h&gt;
 
 int main() {
-    int weight;
-    int height;
-    int bmi;
-    int repeat = 1;
+    int weight, height, bmi, repeat = 1;
 
-    printf("\n\n               bmi Calculator \n\n");   // 15 spaces
-    printf("Body Mass Index (bmi) is a ratio of weight to height.\n\n");
-    printf("Keep in mind that muscle weighs more than fat, so bmi is \n"
-           "not always the best metric of a healthy weight.\n\n\n");
+    printf("\n\nBMI Calculator\n\n");
 
     while (repeat != 0) {
-
-        printf("Enter your weight in pounds (as an integer): ");
+        printf("Enter your weight in pounds: ");
         scanf("%d", &weight);
 
-        printf("Enter your height in inches (as an integer): \n");
+        printf("Enter your height in inches: ");
         scanf("%d", &height);
 
         bmi = (weight * 703) / (height * height);
-        printf("Your bmi is %d.\n", bmi);
-            
-             if (bmi < 19) {
-    printf("According to your bmi, your weight of %d lbs is an unhealthy weight\n", weight);
-} 
-else if (bmi >= 19 && bmi < 24) {  // Healthy weight range
-    printf("According to your bmi, your weight of %d lbs is a healthy weight\n", weight);
-} 
-else if (bmi >= 24 && bmi < 30) {  // Overweight range
-    printf("According to your bmi, your weight of %d lbs is considered overweight\n", weight);
-} 
-else {  // BMI 30 or above is considered obese
-    printf("According to your bmi, your weight of %d lbs is considered obese\n", weight);
-}
+        printf("Your BMI is %d.\n", bmi);
 
-        printf("- - - - - - - - - - - - - - - - - - - - - "
-           "- - - - - - - - - - - -\n\n");
-       	 do {
+        if (bmi < 19) {
+            printf("Your weight of %d lbs is considered underweight.\n", weight);
+        } else if (bmi >= 19 && bmi < 24) {
+            printf("Your weight of %d lbs is considered healthy.\n", weight);
+        } else if (bmi >= 24 && bmi < 30) {
+            printf("Your weight of %d lbs is considered overweight.\n", weight);
+        } else {
+            printf("Your weight of %d lbs is considered obese.\n", weight);
+        }
+
+        do {
             printf("Enter 1 to go again or 0 to quit: ");
             scanf("%d", &repeat);
-        } while (repeat != 0 && repeat != 1);  // Only allow 0 or 1
-        printf("\n");
+        } while (repeat != 0 && repeat != 1);
     }
 
     return 0;
 }
         </code></pre>
     </div>
-    <!-- Link to return to the home page -->
+
+    <!-- Back to Home -->
     <p><a href="index.html" style="color: #4CAF50;">Back to Home</a></p>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top">Top</button>
+
+    <script>
+        // Show "Back to Top" button when scrolling down
+        window.onscroll = function() {
+            let button = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        // Scroll to top when button is clicked
+        document.getElementById("back-to-top").onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+
 </body>
 </html>
