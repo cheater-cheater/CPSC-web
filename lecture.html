@@ -107,6 +107,62 @@ int main() {
 }
         </pre>
     </div>
+     <div class="lecture-section">
+        <h2>February 12nd</h2>
+        <pre>
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int scores; 
+    
+    printf("How many scores will you be entering? \n");
+    if (scanf("%d", &scores) != 1 || scores < 1) {  // Validate input
+        printf("Invalid input\n");
+        return 1;  // Exit the program
+    }
+
+    int arr[scores];  // Array to store scores
+    int min, max, sum = 0;
+
+    printf("\nEnter the scores: \n");
+
+    for (int i = 0; i < scores; i++) {
+        if (scanf("%d", &arr[i]) != 1) {  // Check for valid input
+            printf("Invalid input\n");
+            return 1;  // Exit if input is invalid
+        }
+        printf("\tyou entered: %d\n", arr[i]);
+
+        // Calculate sum for average
+        sum += arr[i];
+
+        // Set min and max initially, then update them
+        if (i == 0) {
+            min = max = arr[i];  // First element is both min and max initially
+        } else {
+            if (arr[i] < min) min = arr[i];
+            if (arr[i] > max) max = arr[i];
+        }
+    }
+
+    // Print all scores in a single line
+    for (int i = 0; i < scores; i++) {
+        printf("%d", arr[i]);
+        if (i < scores - 1) {
+            printf(" ");  // Add space between numbers
+        }
+    }
+
+    // Calculate and print min, max, and average
+    float average = (float)sum / scores;
+    printf("\nminimum score: %d", min);
+    printf("\nmaximum score: %d", max);
+    printf("\naverage: %.2f\n", average);
+
+    return 0;
+}
+        </pre>
+    </div>
 
     <!-- Link to return to the home page -->
     <p><a href="index.html" style="color: #4CAF50;">Back to Home</a></p>
