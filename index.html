@@ -54,47 +54,28 @@
         <button onclick="window.location.href='lecture.html';">Lecture</button>
     </div>
 
-    <p class="counter">Global Website Visits: <span id="visitCount">0</span></p>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <!-- Button to count presses -->
+    <button id="countButton">Press Me!</button>
+    <p class="counter">Button Press Count: <span id="pressCount">0</span></p>
 
     <script>
-        // Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyCHljtVxcpZuPGXH1oQWgWpSoKfhr8_VgU",
-            authDomain: "webproject-88b3d.firebaseapp.com",
-            databaseURL: "https://webproject-88b3d-default-rtdb.firebaseio.com",
-            projectId: "webproject-88b3d",
-            storageBucket: "webproject-88b3d.appspot.com",
-            messagingSenderId: "196607308558",
-            appId: "1:196607308558:web:db8f39aa3836802f5c9d5f",
-            measurementId: "G-H2X22Z8BE6"
-        };
+        // Get the current count from local storage or initialize it to 0 if not set
+        let pressCount = localStorage.getItem('pressCount') ? parseInt(localStorage.getItem('pressCount')) : 0;
+        
+        // Display the current count on page load
+        document.getElementById("pressCount").innerText = pressCount;
 
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app);
-
-        // Function to update visit counter in Firebase
-        function updateVisitCounter() {
-            const visitCountRef = database.ref('visitCount');
-            
-            // Get the current value of the visit count
-            visitCountRef.once('value', function(snapshot) {
-                let count = snapshot.val() || 0;  // If no value, initialize to 0
-                console.log("Current count: " + count);  // Debugging log
-                count += 1;  // Increment the counter by 1
-                visitCountRef.set(count);  // Save to Firebase
-                document.getElementById("visitCount").innerText = count;  // Display count
-            });
+        // Function to update button press count and save it to local storage
+        function updatePressCounter() {
+            pressCount += 1;  // Increment the counter by 1
+            localStorage.setItem('pressCount', pressCount);  // Save the updated count to local storage
+            document.getElementById("pressCount").innerText = pressCount;  // Update the display
         }
 
-        // Update the visit counter when the page loads
-        window.onload = updateVisitCounter;
+        // Attach event listener to the button for press counting
+        document.getElementById("countButton").addEventListener("click", updatePressCounter);
 
-        // Function to change the background color
+        // Function to change the background color when the button is clicked
         function startColorChange() {
             document.getElementById("text").innerText = "You clicked the button!";
             let count = 0;
