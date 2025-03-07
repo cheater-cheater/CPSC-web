@@ -12,7 +12,8 @@
             background-color: black; 
             color: white; 
             font-family: Arial, sans-serif; 
-            text-align: center; 
+            text-align: center;
+            transition: background-color 0.5s ease-in-out; /* Smooth transition effect */
         }
         h1 { color: white; }
 
@@ -43,7 +44,7 @@
     <h1>Welcome to the CPSC 1010/1011 Website</h1>
     <p>This is purely for EDUCATIONAL purposes and should be used to supplement work done in class.</p>
 
-    <button onclick="changeText()">Click Me!</button>
+    <button onclick="startColorChange()">Click Me!</button>
     <p id="text">Hello, world!</p>
 
     <!-- Image displayed -->
@@ -56,8 +57,25 @@
     </div>
 
     <script>
-        function changeText() {
+        function startColorChange() {
             document.getElementById("text").innerText = "You clicked the button!";
+
+            let count = 0;
+            let interval = setInterval(() => {
+                if (count >= 30) {
+                    clearInterval(interval); // Stop changing colors after 30 times
+                    return;
+                }
+
+                document.body.style.backgroundColor = getRandomColor();
+                count++;
+            }, 666); // Change color every ~0.66 seconds (20s / 30 changes)
+        }
+
+        function getRandomColor() {
+            return `rgb(${Math.floor(Math.random() * 256)}, 
+                        ${Math.floor(Math.random() * 256)}, 
+                        ${Math.floor(Math.random() * 256)})`;
         }
     </script>
 </body>
