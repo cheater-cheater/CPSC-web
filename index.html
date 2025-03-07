@@ -13,30 +13,30 @@
             color: white; 
             font-family: Arial, sans-serif; 
             text-align: center;
-            transition: background-color 0.5s ease-in-out; /* Smooth transition effect */
+            transition: background-color 0.5s ease-in-out; 
         }
         h1 { color: white; }
-
-        /* Styles for the buttons container */
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Space between buttons */
-            margin-top: 20px; /* Space from the image */
+            gap: 20px;
+            margin-top: 20px;
         }
-
         button {
             padding: 10px 20px;
-            background-color: #4CAF50; /* Green background */
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
         }
-
         button:hover {
-            background-color: #45a049; /* Darker green on hover */
+            background-color: #45a049;
+        }
+        .counter {
+            margin-top: 40px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -47,29 +47,60 @@
     <button onclick="startColorChange()">Click Me!</button>
     <p id="text">Hello, world!</p>
 
-    <!-- Image displayed -->
     <img src="images/genericcoding_1.png" alt="A coding-related image" width="400">
 
-    <!-- Two buttons beneath the image -->
     <div class="button-container">
-        <button onclick="window.location.href='lab.html';">Lab</button> <!-- Fixed quotes here -->
+        <button onclick="window.location.href='lab.html';">Lab</button>
         <button onclick="window.location.href='lecture.html';">Lecture</button>
     </div>
 
+    <p class="counter">Global Website Visits: <span id="visitCount">0</span></p>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
     <script>
+        // Your Firebase config object
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database(app);
+
+        // Function to get the visit count from Firebase
+        function updateVisitCounter() {
+            const visitCountRef = database.ref('visitCount');
+            visitCountRef.once('value', function(snapshot) {
+                let count = snapshot.val() || 0;
+                count += 1; // Increment the count
+                visitCountRef.set(count); // Update the count in Firebase
+                document.getElementById("visitCount").innerText = count; // Display on the page
+            });
+        }
+
+        // Run the counter update function when the page loads
+        updateVisitCounter();
+
+        // Change the background color when the button is clicked
         function startColorChange() {
             document.getElementById("text").innerText = "You clicked the button!";
-
             let count = 0;
             let interval = setInterval(() => {
                 if (count >= 30) {
-                    clearInterval(interval); // Stop changing colors after 30 times
+                    clearInterval(interval);
                     return;
                 }
-
                 document.body.style.backgroundColor = getRandomColor();
                 count++;
-            }, 666); // Change color every ~0.66 seconds (20s / 30 changes)
+            }, 666);
         }
 
         function getRandomColor() {
