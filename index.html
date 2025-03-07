@@ -54,11 +54,44 @@
         <button onclick="window.location.href='lecture.html';">Lecture</button>
     </div>
 
-    <p class="counter">Global Website Visits: <span id="visitCount">69</span></p>
+    <p class="counter">Global Website Visits: <span id="visitCount">0</span></p>
 
-    <!-- Firebase SDK (removed, as Firebase is no longer used) -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
     <script>
-        // Change the background color when the button is clicked
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHljtVxcpZuPGXH1oQWgWpSoKfhr8_VgU",
+            authDomain: "webproject-88b3d.firebaseapp.com",
+            databaseURL: "https://webproject-88b3d-default-rtdb.firebaseio.com",
+            projectId: "webproject-88b3d",
+            storageBucket: "webproject-88b3d.appspot.com",
+            messagingSenderId: "196607308558",
+            appId: "1:196607308558:web:db8f39aa3836802f5c9d5f",
+            measurementId: "G-H2X22Z8BE6"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database(app);
+
+        // Function to update the visit counter
+        function updateVisitCounter() {
+            const visitCountRef = database.ref('visitCount');
+            visitCountRef.once('value', function(snapshot) {
+                let count = snapshot.val() || 0;  // If no value, initialize to 0
+                count += 1;  // Increment the counter by 1
+                visitCountRef.set(count);  // Save the updated value to Firebase
+                document.getElementById("visitCount").innerText = count;  // Display the updated counter on the page
+            });
+        }
+
+        // Update the visit counter when the page loads
+        updateVisitCounter();
+
+        // Function to change the background color
         function startColorChange() {
             document.getElementById("text").innerText = "You clicked the button!";
             let count = 0;
@@ -72,6 +105,7 @@
             }, 666);
         }
 
+        // Function to generate random colors
         function getRandomColor() {
             return `rgb(${Math.floor(Math.random() * 256)}, 
                         ${Math.floor(Math.random() * 256)}, 
