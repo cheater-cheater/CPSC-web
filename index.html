@@ -59,9 +59,9 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+
     <script>
-        // Your web app's Firebase configuration
+        // Firebase config
         const firebaseConfig = {
             apiKey: "AIzaSyCHljtVxcpZuPGXH1oQWgWpSoKfhr8_VgU",
             authDomain: "webproject-88b3d.firebaseapp.com",
@@ -77,19 +77,22 @@
         const app = firebase.initializeApp(firebaseConfig);
         const database = firebase.database(app);
 
-        // Function to update the visit counter
+        // Function to update visit counter in Firebase
         function updateVisitCounter() {
             const visitCountRef = database.ref('visitCount');
+            
+            // Get the current value of the visit count
             visitCountRef.once('value', function(snapshot) {
                 let count = snapshot.val() || 0;  // If no value, initialize to 0
+                console.log("Current count: " + count);  // Debugging log
                 count += 1;  // Increment the counter by 1
-                visitCountRef.set(count);  // Save the updated value to Firebase
-                document.getElementById("visitCount").innerText = count;  // Display the updated counter on the page
+                visitCountRef.set(count);  // Save to Firebase
+                document.getElementById("visitCount").innerText = count;  // Display count
             });
         }
 
         // Update the visit counter when the page loads
-        updateVisitCounter();
+        window.onload = updateVisitCounter;
 
         // Function to change the background color
         function startColorChange() {
