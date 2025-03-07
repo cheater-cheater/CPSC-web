@@ -79,7 +79,7 @@
         function updateVisitCounter() {
             const visitCountRef = database.ref('visitCount');
             visitCountRef.once('value', function(snapshot) {
-                let count = snapshot.val() || 0;
+                let count = snapshot.val() || 69;  // Default to 69 if no value is found
                 count += 1; // Increment the count
                 visitCountRef.set(count); // Update the count in Firebase
                 document.getElementById("visitCount").innerText = count; // Display on the page
